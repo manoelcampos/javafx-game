@@ -40,6 +40,7 @@ public class StartApplication extends Application {
 
         // Legenda para troca de personagem ativo
         instructions = new Label(getActiveText());
+        instructions.setStyle("-fx-font-size: 40px;");
         instructions.setTextFill(Color.WHITE);
 
         final var box = new StackPane(instructions);
