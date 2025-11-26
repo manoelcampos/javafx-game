@@ -1,0 +1,86 @@
+package io.github.manoelcampos.game.javafxgame;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
+public class StartApplication extends Application {
+    private Label instructions;
+    private Walker chicken;
+    private Jumper frog;
+    private Persona activePersona;
+
+    @Override
+    public void start(Stage stage) {
+        final double width = 900;
+        final double height = 600;
+
+        var world = new Pane();
+        world.setPrefSize(width, height);
+
+        // Cria dois personagens: galinha (anda) e sapo (pula)
+        this.chicken = new Walker(100, height / 2, "chicken");
+        this.frog = new Jumper(300, height / 2, "frog");
+
+        world.getChildren().addAll(chicken.getNode(), frog.getNode());
+
+        // Legenda para troca de personagem ativo
+        this.instructions = new Label("Ativo: Galinha (Tab alterna)");
+        instructions.setTextFill(Color.WHITE);
+        StackPane hudBox = new StackPane(instructions);
+        hudBox.setAlignment(Pos.TOP_LEFT);
+        hudBox.setMouseTransparent(true);
+        hudBox.setPickOnBounds(false);
+        hudBox.setPrefWidth(width);
+        hudBox.setPrefHeight(height);
+
+        // Fundo simples
+        var background = new Rectangle(width, height, Color.DARKSLATEGRAY);
+
+        var root = new Group(background, world, hudBox);
+        var scene = new Scene(root, width, height);
+
+        // Destacar personagem ativo
+        this.activePersona = chicken;
+        chicken.setActive(true);
+
+        scene.setOnKeyPressed(this::onkeyPressed);
+
+        stage.setTitle("POO + Polimorfismo Dinâmico: Andar vs Pular");
+        stage.setScene(scene);
+        stage.show();
+
+        // Garantir foco para capturar as teclas
+        root.requestFocus();
+    }
+
+    private void onkeyPressed(final KeyEvent e) {
+        final KeyCode code = e.getCode();
+        if (code == KeyCode.TAB) {
+            activePersona.setActive(false);
+            activePersona = (activePersona == chicken) ? frog : chicken;
+            activePersona.setActive(true);
+            instructions.setText("Ativo: " + (activePersona == chicken ? "Galinha" : "Sapo") + " (Tab alterna)");
+            e.consume();
+            return;
+        }
+
+        if (isDirectionKey(code)) {
+            activePersona.move(code);
+            e.consume();
+        }
+    }
+
+    private static boolean isDirectionKey(final KeyCode code) {
+        return code == KeyCode.LEFT || code == KeyCode.RIGHT || code == KeyCode.UP || code == KeyCode.DOWN;
+    }
+}
