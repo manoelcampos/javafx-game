@@ -20,33 +20,34 @@ public class StartApplication extends Application {
     private Persona activePersona;
 
     @Override
-    public void start(Stage stage) {
+    public void start(final Stage stage) {
         final double width = 900;
         final double height = 600;
 
-        var world = new Pane();
+        final var world = new Pane();
         world.setPrefSize(width, height);
 
         // Cria dois personagens: galinha (anda) e sapo (pula)
-        this.chicken = new Walker(100, height / 2, "chicken");
-        this.frog = new Jumper(300, height / 2, "frog");
+        final double y = height / 2;
+        this.chicken = new Walker(100, y, "chicken");
+        this.frog = new Jumper(300, y, "frog");
 
         world.getChildren().addAll(chicken.getNode(), frog.getNode());
 
         // Legenda para troca de personagem ativo
         this.instructions = new Label("Ativo: Galinha (Tab alterna)");
         instructions.setTextFill(Color.WHITE);
-        StackPane hudBox = new StackPane(instructions);
-        hudBox.setAlignment(Pos.TOP_LEFT);
-        hudBox.setMouseTransparent(true);
-        hudBox.setPickOnBounds(false);
-        hudBox.setPrefWidth(width);
-        hudBox.setPrefHeight(height);
+        final var box = new StackPane(instructions);
+        box.setAlignment(Pos.TOP_LEFT);
+        box.setMouseTransparent(true);
+        box.setPickOnBounds(false);
+        box.setPrefWidth(width);
+        box.setPrefHeight(height);
 
         // Fundo simples
         var background = new Rectangle(width, height, Color.DARKSLATEGRAY);
 
-        var root = new Group(background, world, hudBox);
+        var root = new Group(background, world, box);
         var scene = new Scene(root, width, height);
 
         // Destacar personagem ativo
@@ -67,9 +68,10 @@ public class StartApplication extends Application {
         final KeyCode code = e.getCode();
         if (code == KeyCode.TAB) {
             activePersona.setActive(false);
-            activePersona = (activePersona == chicken) ? frog : chicken;
+            activePersona = activePersona == chicken ? frog : chicken;
             activePersona.setActive(true);
-            instructions.setText("Ativo: " + (activePersona == chicken ? "Galinha" : "Sapo") + " (Tab alterna)");
+            final var name = activePersona == chicken ? "Galinha" : "Sapo";
+            instructions.setText("Ativo: " + name + " (Tab alterna)");
             e.consume();
             return;
         }
