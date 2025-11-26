@@ -39,8 +39,9 @@ public class StartApplication extends Application {
         world.getChildren().addAll(chicken.getNode(), frog.getNode());
 
         // Legenda para troca de personagem ativo
-        this.instructions = new Label(getActiveText());
+        instructions = new Label(getActiveText());
         instructions.setTextFill(Color.WHITE);
+
         final var box = new StackPane(instructions);
         box.setAlignment(Pos.TOP_LEFT);
         box.setMouseTransparent(true);
