@@ -38,6 +38,10 @@ public abstract class Persona {
         this.imageView.setTranslateY(y);
     }
 
+    public String getName(){
+        return sprite.getName();
+    }
+
     public Node getNode() {
         return imageView;
     }

@@ -45,6 +45,10 @@ public class Sprite {
         tryLoadSpriteSheet();
     }
 
+    public String getName() {
+        return name;
+    }
+
     /**
      * {@return a lista de figuras do personagem quando ele estiver
      * se movimentando em uma determinada direção, para

@@ -32,10 +32,14 @@ public class StartApplication extends Application {
         this.chicken = new Walker(100, y, "chicken");
         this.frog = new Jumper(300, y, "frog");
 
+        // Destacar personagem ativo
+        this.activePersona = chicken;
+        chicken.setActive(true);
+
         world.getChildren().addAll(chicken.getNode(), frog.getNode());
 
         // Legenda para troca de personagem ativo
-        this.instructions = new Label("Ativo: Galinha (Tab alterna)");
+        this.instructions = new Label(getActiveText());
         instructions.setTextFill(Color.WHITE);
         final var box = new StackPane(instructions);
         box.setAlignment(Pos.TOP_LEFT);
@@ -50,10 +54,6 @@ public class StartApplication extends Application {
         var root = new Group(background, world, box);
         var scene = new Scene(root, width, height);
 
-        // Destacar personagem ativo
-        this.activePersona = chicken;
-        chicken.setActive(true);
-
         scene.setOnKeyPressed(this::onkeyPressed);
 
         stage.setTitle("POO + Polimorfismo Dinâmico: Andar vs Pular");
@@ -64,14 +64,17 @@ public class StartApplication extends Application {
         root.requestFocus();
     }
 
+    private String getActiveText() {
+        return "Ativo: %s (Tab alterna)".formatted(activePersona.getName());
+    }
+
     private void onkeyPressed(final KeyEvent e) {
         final KeyCode code = e.getCode();
         if (code == KeyCode.TAB) {
             activePersona.setActive(false);
             activePersona = activePersona == chicken ? frog : chicken;
             activePersona.setActive(true);
-            final var name = activePersona == chicken ? "Galinha" : "Sapo";
-            instructions.setText("Ativo: " + name + " (Tab alterna)");
+            instructions.setText(getActiveText());
             e.consume();
             return;
         }
