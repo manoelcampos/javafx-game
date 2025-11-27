@@ -9,7 +9,8 @@ import javafx.scene.paint.Color;
 
 /**
  * Superclasse abstrata para personagens do jogo.
- * Demonstra polimorfismo dinâmico com o método abstrato {@link #moveInternal(Direction, double[])}.
+ * Demonstra polimorfismo dinâmico com o método abstrato
+ * {@link #moveInternal(Direction, double[])}.
  */
 public abstract class Persona {
     protected final ImageView imageView;
