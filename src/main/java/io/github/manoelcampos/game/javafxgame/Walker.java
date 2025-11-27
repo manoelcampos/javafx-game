@@ -32,7 +32,7 @@ public class Walker extends Persona {
     }
 
     @Override
-    protected void stopPreviousMove() {
+    protected void stopPreviousMoveEffect() {
         /* Não é preciso fazer nenhuma operação para
         * interromper o movimento anterior de um personagem
         * que apenas caminha. */

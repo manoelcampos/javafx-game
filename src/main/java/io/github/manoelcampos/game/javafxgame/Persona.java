@@ -121,7 +121,7 @@ public abstract class Persona {
         final var d = Direction.from(arrowKeyPressed);
         // Troca a imagem do sprite para simular passos
         updateImage(d);
-        stopPreviousMove();
+        stopPreviousMoveEffect();
         final double[] coords = clampToScene(newX(d), newY(d));
         moveInternal(d, coords);
     }
@@ -142,5 +142,5 @@ public abstract class Persona {
      * a animação de movimento anterior,
      * se necessário.
      */
-    protected abstract void stopPreviousMove();
+    protected abstract void stopPreviousMoveEffect();
 }

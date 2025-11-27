@@ -82,7 +82,7 @@ public class Jumper extends Persona {
     }
 
     @Override
-    protected void stopPreviousMove() {
+    protected void stopPreviousMoveEffect() {
         // Evita acúmulo de zoom entre pulos: para animação anterior, se houver, e
         // normaliza a escala para um baseline previsível antes de iniciar um novo pulo.
         if (currentJump != null) {
