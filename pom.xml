@@ -33,6 +33,20 @@
                     <release>25</release>
                 </configuration>
             </plugin>
+            <!-- Torna o JAR executável via `java -jar target/javafx-game-1.0.0.jar` -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Classe principal da aplicação JavaFX -->
+                            <mainClass>io.github.manoelcampos.game.javafxgame.StartApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
