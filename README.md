@@ -1,0 +1,10 @@
+# Exemplo de app JavaFX (OpenFJX) pra mostrar alguns conceitos de POO
+
+Mostra como usar POO para criar classes
+e estruturar o código para a construção de
+um jogo.
+
+Usa conceitos como classes, herança,
+encapsulamento, métodos abstratos,
+métodos estáticos, polimorfismo dinâmico (override)
+e polimorfismo estático (overload, neste caso de construtores).
