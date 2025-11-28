@@ -10,14 +10,16 @@ import javafx.scene.paint.Color;
 /**
  * Superclasse abstrata para personagens do jogo.
  * Demonstra polimorfismo dinâmico com o método abstrato
- * {@link #moveInternal(Direction, double[])}.
+ * {@link #animate(Direction, double[])}.
  */
 public abstract class Persona {
     protected final ImageView imageView;
+
     /**
      * Objeto que
      */
     protected final Sprite sprite;
+
     protected int frameIndex = 0;
     protected double step = 48; // distância em pixels por movimento
     protected double x;
@@ -124,7 +126,7 @@ public abstract class Persona {
         updateImage(d);
         stopPreviousMoveEffect();
         final double[] coords = clampToScene(newX(d), newY(d));
-        moveInternal(d, coords);
+        animate(d, coords);
     }
 
     /**
@@ -136,7 +138,7 @@ public abstract class Persona {
      * @param d      direção para onde o personagem vai se mover
      * @param coords coordenadas x, y para onde o personagem deve ir
      */
-    protected abstract void moveInternal(Direction d, double[] coords);
+    protected abstract void animate(Direction d, double[] coords);
 
     /**
      * Operações a serem executadas para interromper

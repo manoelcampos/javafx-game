@@ -10,3 +10,7 @@ métodos estáticos, polimorfismo dinâmico (override)
 e polimorfismo estático (overload, neste caso de construtores).
 
 image:preview.gif[]
+
+A aplicação implementa o diagrama abaixo.
+
+image::diagram.jpg[]

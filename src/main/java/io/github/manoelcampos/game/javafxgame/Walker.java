@@ -23,7 +23,7 @@ public class Walker extends Persona {
     }
 
     @Override
-    protected void moveInternal(final Direction d, final double[] coords) {
+    protected void animate(final Direction d, final double[] coords) {
         final var translate = new TranslateTransition(millis(180), imageView);
         translate.setToX(coords[0]);
         translate.setToY(coords[1]);

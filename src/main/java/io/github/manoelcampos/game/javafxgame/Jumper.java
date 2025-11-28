@@ -32,7 +32,7 @@ public class Jumper extends Persona {
     }
 
     @Override
-    protected void moveInternal(final Direction d, final double[] coords) {
+    protected void animate(final Direction d, final double[] coords) {
         // Preserva a orientação (espelhamento) em X: -1 para esquerda quando espelhando, 1 caso contrário
         final double signX = getSignX();
         imageView.setScaleX(signX);
