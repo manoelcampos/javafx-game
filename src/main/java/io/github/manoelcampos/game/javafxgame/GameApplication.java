@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class StartApplication extends Application {
+public class GameApplication extends Application {
     private Label instructions;
     private Walker chicken;
     private Jumper frog;

@@ -42,7 +42,7 @@
                     <archive>
                         <manifest>
                             <!-- Classe principal da aplicação JavaFX -->
-                            <mainClass>io.github.manoelcampos.game.javafxgame.StartApplication</mainClass>
+                            <mainClass>io.github.manoelcampos.game.javafxgame.GameApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -57,7 +57,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                io.github.manoelcampos.game.javafxgame.StartApplication
+                                io.github.manoelcampos.game.javafxgame.GameApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

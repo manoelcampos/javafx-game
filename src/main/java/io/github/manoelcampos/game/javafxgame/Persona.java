@@ -116,7 +116,7 @@ public abstract class Persona {
     /**
      * Faz o personagem se mover.
      * As subclasses implementam comportamentos distintos (andar vs pular).
-     * O método só é chamado no {@link StartApplication}
+     * O método só é chamado no {@link GameApplication}
      * se for pressionada uma tecla de seta no teclado.
      * @param arrowKeyPressed tecla de seta pressionada pelo usuário
      */
